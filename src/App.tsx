@@ -1,17 +1,16 @@
 /**
  * 首页，不在router的context之中，所有hooks调用在BasicLayout中
  */
-import { ConfigProvider, theme } from 'antd';
-import zhCN from 'antd/locale/zh_CN';
+import { ConfigProvider } from 'antd';
+// import zhCN from 'antd/locale/zh_CN';
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import routes from './routes';
 import { LoginProvider } from './store/user';
 
-const { darkAlgorithm, compactAlgorithm } = theme;
-
 const router = createBrowserRouter(routes, {
+  // 解决打包后路径错误的问题
   basename: import.meta.env.VITE_PUBLIC_PATH,
 });
 
@@ -30,8 +29,8 @@ const App = () => {
   // 定制主题 https://ant.design/docs/react/customize-theme-cn
   return (
     <ConfigProvider
-      locale={zhCN}
-      // theme={{ algorithm: [darkAlgorithm, compactAlgorithm] }}
+    // locale={zhCN}
+    // theme={{ algorithm: [darkAlgorithm, compactAlgorithm] }}
     >
       <LoginProvider initUserInfo={initUserInfo}>
         <RouterProvider router={router} />

@@ -1,0 +1,29 @@
+.design {
+  position: relative;
+  height: 100%;
+
+  .operateBox {
+    display: flex;
+    height: 50px;
+    justify-content: flex-end;
+    border-bottom: 1px solid #ebeaef;
+    align-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+
+    h4{
+      font-family: PingFangSC-Medium;
+      font-size: 16px;
+      color: #4B5265;
+      font-weight: 500;
+    }
+
+  }
+
+  .designBox {
+    position: relative;
+    overflow-y: scroll;
+    height: 92%;
+  }
+
+}

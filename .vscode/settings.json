@@ -25,5 +25,8 @@
       ".ts",
       ".tsx"
     ]
-  }
+  },
+  "i18n-ally.localesPaths": [
+    "src/components/FormBuilder/i18next/locales"
+  ]
 }

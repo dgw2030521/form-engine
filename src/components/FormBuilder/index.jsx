@@ -23,9 +23,11 @@ const Generator = forwardRef(
     return (
       <Provider ref={ref} {...props}>
         <div className='fr-generator-container'>
-          <Sidebar fixedName={fixedName} />
-          <Canvas onSelect={onCanvasSelect} />
-          <Settings widgets={settingsWidgets} />
+          <div className='mainBox'>
+            <Sidebar fixedName={fixedName} />
+            <Canvas onSelect={onCanvasSelect} />
+            <Settings widgets={settingsWidgets} />
+          </div>
         </div>
       </Provider>
     );

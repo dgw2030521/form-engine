@@ -4,6 +4,7 @@
 import FormRender, { useForm } from 'form-render';
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+
 import { dataToFlatten, flattenToData } from '../../../utils';
 import { useStore } from '../../../utils/hooks';
 import RenderChildren from './RenderChildren';
@@ -132,7 +133,7 @@ const FR = ({ id = '#', preview, displaySchema }) => {
 
   const childrenElement =
     item.children && item.children.length > 0 ? (
-      <ul className="flex flex-wrap pl0">
+      <ul className='flex flex-wrap pl0'>
         <RenderChildren>{item.children}</RenderChildren>
       </ul>
     ) : null;
@@ -142,8 +143,7 @@ const FR = ({ id = '#', preview, displaySchema }) => {
     return (
       <Wrapper style={columnStyle} $id={id} item={item}>
         <div
-          className={`${containerClass} h-100 f4 black-40 flex items-center justify-center`}
-        >
+          className={`${containerClass} h-100 f4 black-40 flex items-center justify-center`}>
           {t('点击/拖拽左侧栏的组件进行添加')}
         </div>
       </Wrapper>
@@ -156,7 +156,7 @@ const FR = ({ id = '#', preview, displaySchema }) => {
         <RenderField {...fieldProps}>
           {(isObj || isList) && (
             <Wrapper $id={id} item={item} inside>
-              {childrenElement || <div className="h2" />}
+              {childrenElement || <div className='h2' />}
             </Wrapper>
           )}
         </RenderField>

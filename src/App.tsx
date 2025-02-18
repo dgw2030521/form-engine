@@ -4,7 +4,10 @@
 import { ConfigProvider } from 'antd';
 // import zhCN from 'antd/locale/zh_CN';
 import React from 'react';
+import { Provider } from 'react-redux';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+import store from '@/store';
 
 import routes from './routes';
 import { LoginProvider } from './store/user';
@@ -28,14 +31,16 @@ const initUserInfo: Partial<any> = {
 const App = () => {
   // 定制主题 https://ant.design/docs/react/customize-theme-cn
   return (
-    <ConfigProvider
-    // locale={zhCN}
-    // theme={{ algorithm: [darkAlgorithm, compactAlgorithm] }}
-    >
-      <LoginProvider initUserInfo={initUserInfo}>
-        <RouterProvider router={router} />
-      </LoginProvider>
-    </ConfigProvider>
+    <Provider store={store}>
+      <ConfigProvider
+      // locale={zhCN}
+      // theme={{ algorithm: [darkAlgorithm, compactAlgorithm] }}
+      >
+        <LoginProvider initUserInfo={initUserInfo}>
+          <RouterProvider router={router} />
+        </LoginProvider>
+      </ConfigProvider>
+    </Provider>
   );
 };
 

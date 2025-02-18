@@ -1,6 +1,9 @@
+import './Wrapper.less';
+
 import { CopyOutlined, DeleteOutlined, DragOutlined } from '@ant-design/icons';
 import React, { useRef, useState } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
+
 import {
   copyItem,
   dropItem,
@@ -8,7 +11,6 @@ import {
   isObject,
 } from '../../../utils';
 import { useGlobal, useStore } from '../../../utils/hooks';
-import './Wrapper.less';
 
 function Wrapper({ $id, item, inside = false, children, style }) {
   const [position, setPosition] = useState();
@@ -244,11 +246,10 @@ function Wrapper({ $id, item, inside = false, children, style }) {
       className={`field-wrapper ${
         $id !== '#' && isSelected ? 'selected-field-wrapper' : ''
       } relative w-100`}
-      onClick={handleClick}
-    >
+      onClick={handleClick}>
       {children}
 
-      <div className="absolute top-0 right-1 f7">
+      <div className='absolute top-0 right-1 f7'>
         {/* {!inside && $id !== '#' && !hideId && ( */}
         {/*  <span className={hasDuplicateId ? 'red' : 'blue'}>{shownId}</span> */}
         {/* )} */}
@@ -258,20 +259,20 @@ function Wrapper({ $id, item, inside = false, children, style }) {
       </div>
 
       {!inside && $id !== '#' && isSelected && (
-        <div className="pointer-move" ref={dragRef}>
+        <div className='pointer-move' ref={dragRef}>
           <DragOutlined />
         </div>
       )}
 
       {!inside && $id !== '#' && isSelected && _numOfBtns > 0 && (
-        <div className="pointer-wrapper">
+        <div className='pointer-wrapper'>
           {_showDefaultBtns[0] !== false && (
-            <div className="pointer" onClick={deleteItem}>
+            <div className='pointer' onClick={deleteItem}>
               <DeleteOutlined />
             </div>
           )}
           {_showDefaultBtns[1] !== false && (
-            <div className="pointer" onClick={handleItemCopy}>
+            <div className='pointer' onClick={handleItemCopy}>
               <CopyOutlined />
             </div>
           )}
@@ -279,9 +280,8 @@ function Wrapper({ $id, item, inside = false, children, style }) {
             return (
               <div
                 key={`${idx}`}
-                className="pointer"
-                onClick={e => item.onClick && item.onClick(e, schema)}
-              >
+                className='pointer'
+                onClick={e => item.onClick && item.onClick(e, schema)}>
                 {item.text || item.children}
               </div>
             );

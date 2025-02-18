@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react';
+import './index.less';
+
 import { RightOutlined } from '@ant-design/icons';
 import { Tabs } from 'antd';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+
 import { useSet, useStore } from '../../utils/hooks';
 import GlobalSettings from './GlobalSettings';
 import ItemSettings from './ItemSettings';
-import './index.less';
 
 export default function Settings({ widgets }) {
   const { t } = useTranslation();
@@ -21,19 +23,17 @@ export default function Settings({ widgets }) {
 
   const ToggleIcon = () => (
     <div
-      className="absolute top-0 left-0 pointer"
+      className='absolute top-0 left-0 pointer'
       style={{ height: 30, width: 30, padding: '8px 0 0 8px' }}
-      onClick={toggleRight}
-    >
-      <RightOutlined className="f5" />
+      onClick={toggleRight}>
+      <RightOutlined className='f5' />
     </div>
   );
 
   const HideRightArrow = () => (
     <div
-      className="absolute right-0 top-0 h2 flex-center"
-      style={{ width: 40, transform: 'rotate(180deg)' }}
-    >
+      className='absolute right-0 top-0 h2 flex-center'
+      style={{ width: 40, transform: 'rotate(180deg)' }}>
       <ToggleIcon />
     </div>
   );
@@ -68,7 +68,7 @@ export default function Settings({ widgets }) {
   }
 
   return showRight ? (
-    <div className="right-layout relative pl2">
+    <div className='right-layout relative pl2'>
       <ToggleIcon />
       <Tabs
         activeKey={tabsKey}

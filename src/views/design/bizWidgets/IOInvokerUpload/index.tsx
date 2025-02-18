@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Upload, message, Button, Space } from 'antd';
+import { Button, message, Space, Upload } from 'antd';
+import classNames from 'classnames';
 import { map } from 'lodash';
-import UploadIcon from './upload.svg';
-import { storage } from './storage';
-import { IOInvoker } from '@/CodeDefine/Operation/Invoker/IOInvoker';
-import './index.styl';
+import React, { useEffect, useState } from 'react';
 
-// /app-operation/IO/uploadFile
+import styles from './index.module.scss';
+import { storage } from './storage';
 
 interface UploadProps {
   // 打开上传筛选的类型
@@ -44,10 +42,10 @@ export default function IOInvokerUpload(props) {
    * @param preview
    */
   const getPreviewUrl = async (fileKey: string, preview: boolean) => {
-    const result = await IOInvoker.getDownUrl(fileKey, preview);
-    if (result.code.Code === 200) {
-      return result.result;
-    }
+    // const result = await IOInvoker.getDownUrl(fileKey, preview);
+    // if (result.code.Code === 200) {
+    //   return result.result;
+    // }
     return null;
   };
 
@@ -129,13 +127,12 @@ export default function IOInvokerUpload(props) {
               <Space>
                 <span>{item.name}</span>
                 <a
-                  target="_blank"
-                  rel="noreferrer"
+                  target='_blank'
+                  rel='noreferrer'
                   onClick={async () => {
                     const previewUrl = await getPreviewUrl(item.key, true);
                     window.open(previewUrl, '_blank');
-                  }}
-                >
+                  }}>
                   查看
                 </a>
                 <a
@@ -143,9 +140,8 @@ export default function IOInvokerUpload(props) {
                     const previewUrl = await getPreviewUrl(item.key, false);
                     window.open(previewUrl, '_blank');
                   }}
-                  target="_blank"
-                  rel="noreferrer"
-                >
+                  target='_blank'
+                  rel='noreferrer'>
                   下载
                 </a>
               </Space>
@@ -159,9 +155,13 @@ export default function IOInvokerUpload(props) {
   return (
     <>
       {config ? (
-        <div className={`biz-upload01${' biz-upload01-list'}`}>
+        <div
+          className={classNames({
+            [styles['biz-upload01']]: true,
+            [styles['biz-upload01-list']]: true,
+          })}>
           {/* 仅支持pdf、word、xls文件，最多上传5份，单个大小不超过20M */}
-          <div className="biz-upload01-tip">{config.tip}</div>
+          <div className={styles['biz-upload01-tip']}>{config.tip}</div>
           <Upload
             accept={config.accept}
             maxCount={config.maxCount}
@@ -195,18 +195,8 @@ export default function IOInvokerUpload(props) {
             }}
             defaultFileList={uploadFileList}
             onRemove={file => {}}
-            onChange={handleFileOnChange}
-          >
+            onChange={handleFileOnChange}>
             <Button
-              icon={
-                <UploadIcon
-                  style={{
-                    marginRight: 6,
-                    fontSize: 16,
-                    transform: 'translateY(3px)',
-                  }}
-                />
-              }
               style={{
                 padding: '4px 10px',
                 fontWeight: 'bold',
@@ -216,8 +206,7 @@ export default function IOInvokerUpload(props) {
                   message.warning('上传数量已达上限');
                   e.stopPropagation();
                 }
-              }}
-            >
+              }}>
               点击上传
             </Button>
           </Upload>

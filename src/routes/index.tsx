@@ -3,9 +3,9 @@ import React from 'react';
 import NotFound from '@/components/NotFound';
 import BasicLayout from '@/layouts/BasicLayout';
 import Demo from '@/views/demo';
-import DemoDesign from '@/views/demo/design';
 import Home from '@/views/home';
 
+import designRoutes from './design';
 import formListRoutes from './formList';
 import metaModelRoutes from './metaModel';
 
@@ -28,13 +28,9 @@ const routes = [
         path: '/demo',
         element: <Demo />,
       },
-      {
-        path: '/demo/design',
-        element: <DemoDesign />,
-      },
       ...formListRoutes,
       ...metaModelRoutes,
-      // ...designRoutes,
+      ...designRoutes,
       {
         path: '*',
         element: <NotFound />,

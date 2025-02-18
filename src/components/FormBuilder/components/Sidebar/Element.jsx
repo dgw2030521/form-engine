@@ -1,18 +1,20 @@
 /**
  * 渲染每个控件，可拖拽
  */
+import './Element.less';
+
 import React from 'react';
 import { useDrag } from 'react-dnd';
 import { useTranslation } from 'react-i18next';
+
 import { addItem } from '../../utils';
 import { useGlobal, useStore } from '../../utils/hooks';
-import './Element.less';
 
 // 目前没有用icon，但是可以补上
 const WidgetUI = ({ onClick, text, icon }) => {
   const { t } = useTranslation(['components']);
   return (
-    <li className="left-item" onClick={onClick}>
+    <li className='left-item' onClick={onClick}>
       {icon}
       {t(text)}
     </li>

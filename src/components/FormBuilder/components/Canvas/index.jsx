@@ -1,7 +1,8 @@
 import { Button, Input, message, Modal } from 'antd';
 import copyTOClipboard from 'copy-text-to-clipboard';
-import { useTranslation } from 'react-i18next';
 import React, { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+
 import {
   idToSchema,
   isObject,
@@ -98,16 +99,15 @@ const Canvas = ({ onSelect }) => {
   };
 
   return (
-    <div className="mid-layout pr2">
+    <div className='mid-layout pr2'>
       {!hideInnerOperateButtons && (
-        <div className="mv2 mh1">
+        <div className='mv2 mh1'>
           {_showDefaultBtns[0] !== false && (
             <Button
-              className="mr2 mb1"
+              className='mr2 mb1'
               onClick={() => {
                 setGlobal({ selected: '#', preview: !preview });
-              }}
-            >
+              }}>
               {getDefaultBtnText(
                 _showDefaultBtns[0],
                 [t('开始编辑'), t('最终展示')],
@@ -116,23 +116,23 @@ const Canvas = ({ onSelect }) => {
             </Button>
           )}
           {_showDefaultBtns[1] !== false && (
-            <Button className="mr2" onClick={clearSchema}>
+            <Button className='mr2' onClick={clearSchema}>
               {getDefaultBtnText(_showDefaultBtns[1], t('清空'))}
             </Button>
           )}
           {_showDefaultBtns[2] !== false && (
-            <Button className="mr2" onClick={toggleModal2}>
+            <Button className='mr2' onClick={toggleModal2}>
               {getDefaultBtnText(_showDefaultBtns[2], t('导入'))}
             </Button>
           )}
           {_showDefaultBtns[3] !== false && (
-            <Button type="primary" className="mr2" onClick={toggleModal}>
+            <Button type='primary' className='mr2' onClick={toggleModal}>
               {getDefaultBtnText(_showDefaultBtns[3], t('导出schema'))}
             </Button>
           )}
           {_extraBtns.map((item, idx) => {
             return (
-              <Button key={idx.toString()} className="mr2" {...item}>
+              <Button key={idx.toString()} className='mr2' {...item}>
                 {item.text || item.children}
               </Button>
             );
@@ -148,9 +148,8 @@ const Canvas = ({ onSelect }) => {
         onOk={copySchema}
         onCancel={toggleModal}
         okText={t('复制')}
-        cancelText={t('取消')}
-      >
-        <div className="mt3">
+        cancelText={t('取消')}>
+        <div className='mt3'>
           <TextArea
             style={{ fontSize: 12 }}
             value={displaySchemaString}
@@ -163,9 +162,8 @@ const Canvas = ({ onSelect }) => {
         okText={t('导入')}
         cancelText={t('取消')}
         onOk={importSchema}
-        onCancel={toggleModal2}
-      >
-        <div className="mt3">
+        onCancel={toggleModal2}>
+        <div className='mt3'>
           <TextArea
             style={{ fontSize: 12 }}
             value={local.schemaForImport}

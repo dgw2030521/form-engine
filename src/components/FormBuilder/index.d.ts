@@ -145,7 +145,7 @@ declare const serializeToDraft: (schema: any) => any;
 declare const deserialize: (schemaStr: any) => any;
 declare const serialize: (schema: any) => any;
 
-export { defaultSettings, defaultCommonSettings, defaultGlobalSettings };
+export { defaultCommonSettings, defaultGlobalSettings, defaultSettings };
 export { fromSetting, toSetting };
-export { serializeToDraft, serialize, deserialize };
+export { deserialize, serialize, serializeToDraft };
 export default FRGenerator;

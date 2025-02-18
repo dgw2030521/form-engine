@@ -1,17 +1,17 @@
-import { elements } from './elements';
+import { advancedElements } from './advancedElements';
 import { baseCommonSettings } from './baseCommonSettings';
 import { defaultCommonSettings } from './defaultCommonSettings';
-import { advancedElements } from './advancedElements';
-import { layouts } from './layouts';
 import { defaultGlobalSettings } from './defaultGlobalSettings';
+import { elements } from './elements';
+import { layouts } from './layouts';
 
 export {
-  elements,
+  advancedElements,
   baseCommonSettings,
   defaultCommonSettings,
-  advancedElements,
-  layouts,
   defaultGlobalSettings,
+  elements,
+  layouts,
 };
 
 const saves = [

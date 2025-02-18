@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { Button, message, Modal, Select, Tooltip } from 'antd';
 import { DeleteOutlined, PlusOutlined } from '@ant-design/icons';
+import { Button, message, Modal, Select, Tooltip } from 'antd';
 import { filter, find, isEmpty, map } from 'lodash';
-import styles from './RelatedLinkCodeSetting.module.scss';
+import React, { useEffect, useState } from 'react';
+
 import useFormDesign from '@/hooks/useFormDesign';
-import { MetaFormFieldDisplayType } from '@/CodeDefine/Operation/MetaFormFieldDisplayType';
+
+import styles from './RelatedLinkCodeSetting.module.scss';
 
 interface Props {
   value: any;
@@ -12,7 +13,6 @@ interface Props {
 }
 export default function RelatedLinkCodeSetting(props: Props) {
   const { value, onChange } = props;
-  console.log('!!!value', value);
   const { FieldList } = useFormDesign();
   const [visible, setVisible] = useState(false);
   const [selected, setSelected] = useState(value);
@@ -38,11 +38,10 @@ export default function RelatedLinkCodeSetting(props: Props) {
     <div className={styles.wgtContainer}>
       <div>
         <Button
-          type="primary"
+          type='primary'
           onClick={() => {
             setVisible(true);
-          }}
-        >
+          }}>
           <PlusOutlined />
           添加关联模板
         </Button>
@@ -51,7 +50,7 @@ export default function RelatedLinkCodeSetting(props: Props) {
         {!isEmpty(matchedItem) && (
           <div className={styles.item}>
             <div className={styles.left}>
-              <Tooltip placement="topLeft" title={matchedItem?.Name}>
+              <Tooltip placement='topLeft' title={matchedItem?.Name}>
                 {matchedItem?.Name}
               </Tooltip>
             </div>
@@ -59,8 +58,7 @@ export default function RelatedLinkCodeSetting(props: Props) {
               <span
                 onClick={() => {
                   handleDelTpl();
-                }}
-              >
+                }}>
                 <DeleteOutlined />
               </span>
             </div>
@@ -70,7 +68,7 @@ export default function RelatedLinkCodeSetting(props: Props) {
       <Modal
         destroyOnClose
         width={600}
-        title="关联模板"
+        title='关联模板'
         open={visible}
         onOk={() => {
           if (!selected) {
@@ -81,26 +79,22 @@ export default function RelatedLinkCodeSetting(props: Props) {
         }}
         onCancel={() => {
           setVisible(false);
-        }}
-      >
+        }}>
         <span>请选择模板：</span>
         <Select
           allowClear
           filterOption={(input, option) =>
-            (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+            `${option?.label ?? ''}`.toLowerCase().includes(input.toLowerCase())
           }
           showSearch
-          placeholder="请选择组件"
+          placeholder='请选择组件'
           style={{ width: 300 }}
           onChange={val => {
             setSelected(val);
           }}
           value={selected}
           options={map(
-            filter(
-              FieldList,
-              i => i.DisplayType._value === MetaFormFieldDisplayType.Link.Value,
-            ),
+            filter(FieldList, i => i.DisplayType._value === 'link'),
             item => {
               return {
                 value: item.Code,

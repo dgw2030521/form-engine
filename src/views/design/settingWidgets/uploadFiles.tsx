@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Upload, message, Button, Form } from 'antd';
-import UploadIcon from '@/asserts/upload.svg';
-import './index.styl';
+import { Button, message, Upload } from 'antd';
+import React, { useEffect, useState } from 'react';
+
+import styles from './uploadFiles.module.scss';
 
 interface FCProps {
   accept?: string;
@@ -22,7 +22,6 @@ interface FCProps {
   onFileChange?: Function;
   addons?: any;
 }
-console.log('process.env.PUBLIC_URL---', process.env.PUBLIC_URL);
 let fileAction = null;
 let fileUploadUrl = '';
 let token = '-';
@@ -30,15 +29,15 @@ let token = '-';
 const isInIframe = window.self !== window.top;
 if (!isInIframe) {
   fileUploadUrl =
-  process.env.NODE_ENV === 'development'
-    ? `/app-gov/IO/fixUpload`
-    : `${process.env.PUBLIC_URL}/app-operation/IO/fixUpload`;
+    process.env.NODE_ENV === 'development'
+      ? `/app-gov/IO/fixUpload`
+      : `${process.env.PUBLIC_URL}/app-operation/IO/fixUpload`;
   token = localStorage.getItem('token');
 } else {
   fileUploadUrl =
-  process.env.NODE_ENV === 'development'
-    ? `/app-gov/IO/fixUpload`
-    : `/zczd/gov/app-gov/IO/fixUpload`;
+    process.env.NODE_ENV === 'development'
+      ? `/app-gov/IO/fixUpload`
+      : `/zczd/gov/app-gov/IO/fixUpload`;
   token = localStorage.getItem('$gov_token');
 }
 
@@ -100,13 +99,15 @@ const UploadFileToLink = (props: FCProps) => {
   }, [config, uploadFileList]);
 
   return (
-    <div className={`biz-upload01`}>
-      <div className="biz-upload01-tip">支持pdf、png、jpg、pdf、doc、xls格式，文件大小不超过5M</div>
+    <div className={styles['biz-upload01']}>
+      <div className={styles['biz-upload01-tip']}>
+        支持pdf、png、jpg、pdf、doc、xls格式，文件大小不超过5M
+      </div>
       <Upload
         accept={config?.accept}
         maxCount={config?.maxCount}
         multiple={config?.maxCount > 1}
-        name="file"
+        name='file'
         action={fileUploadUrl}
         headers={{
           Authorization: token || '--',
@@ -140,7 +141,7 @@ const UploadFileToLink = (props: FCProps) => {
         onDownload={file => {
           if (props.onDownload) props.onDownload(file);
         }}
-        onPreview={(file) => {
+        onPreview={file => {
           if (props.onPreview) props.onPreview(file);
         }}
         onChange={info => {
@@ -201,19 +202,8 @@ const UploadFileToLink = (props: FCProps) => {
             });
             props.onUpload(_fileList, _file, fileAction);
           }
-          
-        }}
-      >
+        }}>
         <Button
-          icon={
-            <UploadIcon
-              style={{
-                marginRight: 6,
-                fontSize: 16,
-                transform: 'translateY(3px)',
-              }}
-            />
-          }
           style={{
             padding: '4px 10px',
             fontWeight: 'bold',
@@ -223,8 +213,7 @@ const UploadFileToLink = (props: FCProps) => {
               message.warning('上传数量已达上限');
               e.stopPropagation();
             }
-          }}
-        >
+          }}>
           点击上传
         </Button>
       </Upload>

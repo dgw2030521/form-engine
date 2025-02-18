@@ -1,4 +1,5 @@
 import React, { Suspense } from 'react';
+
 import {
   getParentProps,
   isCssLength,
@@ -99,21 +100,19 @@ const RenderField = ({
                 ? 'no-colon'
                 : ''
             }`} // checkbox不带冒号
-            title={title}
-          >
-            {required && <span className="fr-label-required"> *</span>}
+            title={title}>
+            {required && <span className='fr-label-required'> *</span>}
             <span
               className={`${isComplex ? 'b' : ''} ${
                 displayType === 'column' ? 'flex-none' : ''
-              }`}
-            >
+              }`}>
               <span dangerouslySetInnerHTML={{ __html: title }} />
             </span>
             {description && (
-              <span className="fr-desc ml2">(&nbsp;{description}&nbsp;)</span>
+              <span className='fr-desc ml2'>(&nbsp;{description}&nbsp;)</span>
             )}
             {displayType !== 'row' && showValidate && (
-              <span className="fr-validate">validation</span>
+              <span className='fr-validate'>validation</span>
             )}
           </label>
         </div>

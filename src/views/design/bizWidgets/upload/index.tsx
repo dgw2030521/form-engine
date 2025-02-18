@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import { Button, Space, Upload } from 'antd';
 import type { UploadFile, UploadProps } from 'antd/es/upload/interface';
 import { filter, isEmpty, map } from 'lodash';
-import { IOInvoker } from '@/CodeDefine/Operation/Invoker/IOInvoker';
+import React, { useEffect, useState } from 'react';
 
 export default function App(props) {
   const { schema, value, onChange } = props;
@@ -11,10 +10,10 @@ export default function App(props) {
   const isInPreview = !isEmpty(props.addons);
 
   const getPreviewUrl = async (fileKey: string, preview: boolean) => {
-    const result = await IOInvoker.getDownUrl(fileKey, preview);
-    if (result.code.Code === 200) {
-      return result.result;
-    }
+    // const result = await IOInvoker.getDownUrl(fileKey, preview);
+    // if (result.code.Code === 200) {
+    //   return result.result;
+    // }
     return null;
   };
   const renderFileBox = (fileKeysStr: string) => {
@@ -28,14 +27,13 @@ export default function App(props) {
           <Space>
             <span>{fileName}</span>
             <a
-              target="_blank"
-              rel="noreferrer"
+              target='_blank'
+              rel='noreferrer'
               onClick={async () => {
                 const previewUrl = await getPreviewUrl(fileKey, true);
                 window.open(previewUrl, '_blank');
-              }}
-            >
-              <i className="iconfont icon-chakan-copy" />
+              }}>
+              <i className='iconfont icon-chakan-copy' />
               查看
             </a>
             <a
@@ -43,10 +41,9 @@ export default function App(props) {
                 const previewUrl = await getPreviewUrl(fileKey, false);
                 window.open(previewUrl, '_blank');
               }}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <i className="iconfont icon-xiazai" />
+              target='_blank'
+              rel='noreferrer'>
+              <i className='iconfont icon-xiazai' />
               下载
             </a>
           </Space>
@@ -94,13 +91,12 @@ export default function App(props) {
               <Space>
                 <span>{item.name}</span>
                 <a
-                  target="_blank"
-                  rel="noreferrer"
+                  target='_blank'
+                  rel='noreferrer'
                   onClick={async () => {
                     // const previewUrl = await getPreviewUrl(fileKey, true);
                     // window.open(previewUrl, '_blank');
-                  }}
-                >
+                  }}>
                   查看
                 </a>
                 <a
@@ -108,9 +104,8 @@ export default function App(props) {
                     // const previewUrl = await getPreviewUrl(fileKey, false);
                     // window.open(previewUrl, '_blank');
                   }}
-                  target="_blank"
-                  rel="noreferrer"
-                >
+                  target='_blank'
+                  rel='noreferrer'>
                   下载
                 </a>
               </Space>
@@ -134,8 +129,7 @@ export default function App(props) {
         }}
         fileList={fileList}
         onChange={handleChange}
-        disabled={schema?.disabled}
-      >
+        disabled={schema?.disabled}>
         <Button icon={<UploadOutlined />}>上传文件</Button>
       </Upload>
     </div>

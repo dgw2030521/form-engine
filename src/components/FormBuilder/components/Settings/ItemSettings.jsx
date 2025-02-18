@@ -2,8 +2,9 @@
  * 渲染每个控件的可配置项
  */
 import FormRender, { useForm } from 'form-render';
-import React, { useEffect, useState } from 'react';
 import { isEmpty, isNil } from 'lodash';
+import React, { useEffect, useState } from 'react';
+
 import {
   advancedElements,
   baseCommonSettings,
@@ -190,7 +191,7 @@ export default function ItemSettings({ widgets }) {
   return (
     <div style={{ paddingRight: 24 }}>
       <FormRender
-        labelWidth="120"
+        labelWidth='120'
         form={form}
         schema={settingSchema}
         widgets={{ ..._widgets, ...widgets }}

@@ -301,7 +301,7 @@ const widgetsConfig = [
     ],
   },
   {
-    title: '材料上传类',
+    title: '自定义组件',
     widgets: [
       {
         text: '链接',

@@ -1,0 +1,26 @@
+.wgtContainer {
+  width: 100%;
+}
+.list {
+  .item {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 10px;
+    background-color: #ebeaef;
+
+    .left {
+      width: 80%;
+      overflow: hidden;
+      text-align: left;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .right {
+      flex-grow: 1;
+      text-align: center;
+    }
+  }
+}

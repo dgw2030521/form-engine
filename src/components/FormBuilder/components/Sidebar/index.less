@@ -1,0 +1,62 @@
+.left-layout {
+  flex-shrink: 0;
+  overflow-y: auto;
+  height: 100%;
+
+  display: flex;
+
+  .handleLeft {
+    // 固定宽度 50px
+    width: 3rem;
+    flex-shrink: 0; // 防止该元素收缩
+    border-right: 1px solid #e8e8e8;
+
+    display: flex;
+    flex-direction: column;
+
+    .handleLeftTop {
+      flex-grow: 1; // 占满剩余高度
+      //  使用flex布局，垂直居中
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: center;
+    }
+
+    .handleLeftBottom {
+      flex-shrink: 0; // 防止该元素收缩
+      height: 4rem; // 固定高度 50px
+      //  使用flex布局，垂直居中
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .widgetArea {
+    flex-grow: 1;
+
+    .widgetAreaHeader {
+      padding: 8px;
+
+      display: flex;
+      justify-content: space-between;
+
+      .widgetAreaHeaderLeft {
+        //  使用flex布局，垂直居中
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .widgetAreaHeaderRight {
+      }
+    }
+
+    .items-box {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  }
+}
